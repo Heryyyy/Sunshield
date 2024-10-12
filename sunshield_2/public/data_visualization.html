@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Sun Protection Statistics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/uv.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Resource/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <header class="menu-toggle">
+        <div class="hamburger-icon">
+            <img src="Resource/hamburger-icon.png" alt="" onclick="toggleMenu()">
+
+        </div>
+        <nav id="sidebar" class="hide">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="uv_analysis.html">Sunshine Forecast</a></li>
+                <!-- <li><a href="find_your _skin_doctor.html">Find Your Skin Doctor</a></li> -->
+                <li><a href="protect _your_skin.html">Protect Your Skin</a></li>
+                <li><a href="data_visualization.html">Sunburnt Data</a></li>
+                <li><a href="skin_health _game.html">Sun Protection Challenge</a></li>
+                <li><a href="daily_sun _protection_advice.html">Daily Sun Protection Advice</a></li>
+                <li><a href="tamagochi.html">Sun Safety Game</a></li>
+            </ul>
+        </nav>
+        <div class="uv-index-button">
+            <div id="current-uv-index">
+            </div>
+
+        </div>
+        <div class="change-btn">
+            <p>Change Location</p>
+            <div id="dropdownMenu">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div id="overlay" onclick="toggleMenu()" class="overlay"></div>
+    <div class="page">
+        <div class="container">
+            <div class="button-group">
+                <button class="nav-button active" data-chart="location">
+                🏖️ Sunburn-prone locations
+            </button>
+                <button class="nav-button" data-chart="body">
+                🩹 Sunburn-prone body parts
+            </button>
+                <button class="nav-button" data-chart="trend">
+                📈 Sunburn trend over years
+            </button>
+
+
+            </div>
+            <div class="header">
+                <h1 class="title">
+                    ☀️ Where kids tend to get sunburnt
+                </h1>
+                <p class="subtitle">Let's take a look at where you should pay special attention to sun protection</p>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="sunburnChart"></canvas>
+                <div class="icon-legend">
+                    <div class="legend-item">
+                        <span class="legend-icon">🏊‍♂️</span>
+                        <span class="legend-text">Water-based activity</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon">🏠</span>
+                        <span class="legend-text">Private residence</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon">⚽</span>
+                        <span class="legend-text">Structured outdoor</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon">🎡</span>
+                        <span class="legend-text">Unstructured outdoor </span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-icon">🏫</span>
+                        <span class="legend-text">School or Creche</span>
+                    </div>
+                </div>
+            </div>
+            <div class="line-chart-container">
+                <canvas id="trendChart"></canvas>
+            </div>
+            <div class="image-container">
+                <img src="Resource/boy-girl1.png" alt="Children in swimwear">
+                <div class="annotation" style="top: 20%; left: 33%;" data-part="Head or face">
+                    <div class="annotation-dot"></div>
+                    <span class="annotation-text">——————Head or face</span>
+                </div>
+                <div class="annotation" style="top: 52%; left: 68%;" data-part="Neck">
+                    <div class="annotation-dot"></div>
+                    <span class="annotation-text">——————Neck</span>
+                </div>
+                <div class="annotation" style="top: 55%; left: 14%;" data-part="Shoulders">
+                    <span class="annotation-text">Shoulders—————— </span>
+                    <div class="annotation-dot"></div>
+                </div>
+                <div class="annotation" style="top: 60%; left: 69%;" data-part="Chest or back">
+                    <div class="annotation-dot"></div>
+                    <span class="annotation-text">——————Chest or back</span>
+                </div>
+                <div class="annotation" style="top: 62%; left: 9%;" data-part="Arms or hands">
+                    <span class="annotation-text">Arms or hands—————— </span>
+                    <div class="annotation-dot"></div>
+                </div>
+                <div class="annotation" style="top: 83%; left: 71%;" data-part="Legs or feet">
+                    <div class="annotation-dot"></div>
+                    <span class="annotation-text">——————Legs or feet</span>
+                </div>
+                <div class="data-popup"></div>
+            </div>
+
+
+        </div>
+        <div class="back-home-btn">
+            <a href="home.html"><button class="bh-btn">Back Home</button></a>
+        </div>
+    </div>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="uv_analysis.html">Sunshine Forecast</a></li>
+                <!-- <li><a href="find_your _skin_doctor.html">Find Your Skin Doctor</a></li> -->
+                <li><a href="protect _your_skin.html">Protect Your Skin</a></li>
+                <li><a href="data_visualization.html">Sunburnt Data</a></li>
+                <li><a href="skin_health _game.html">Sun Protection Challenge</a></li>
+                <li><a href="daily_sun _protection_advice.html">Daily Sun Protection Advice</a></li>
+                <li><a href="tamagochi.html">Sun Safety Game</a></li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            <img src="Resource/favicon.png" alt="Logo"> © 2024 TPD3 All Rights Reserved
+        </div>
+    </footer>
+</body>
+
+</html>
